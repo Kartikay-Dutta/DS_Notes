@@ -44,39 +44,110 @@
 // }
 
 
+// Temp calc
+// #include <iostream>
+// using namespace std;
+
+// int main() {
+//     double temp;
+//     cin >> temp;
+//     char type;
+//     cin >> type;
+
+//     if (type == 'c' || type == 'C') {
+//         double far = (temp * 1.8) + 32;
+//         double kel = temp + 273.15;
+//         cout << "Original (C): " << temp << endl;
+//         cout << "Far: " << far << endl;
+//         cout << "Kel: " << kel << endl;
+//     }
+//     else if (type == 'f' || type == 'F') {
+//         double cel = (temp - 32) * 5.0 / 9.0;
+//         double kel = cel + 273.15;
+//         cout << "Original (F): " << temp << endl;
+//         cout << "Cel: " << cel << endl;
+//         cout << "Kel: " << kel << endl;
+//     }
+//     else if (type == 'k' || type == 'K') {
+//         double cel = temp - 273.15;
+//         double far = (cel * 9.0 / 5.0) + 32;
+//         cout << "Original (K): " << temp << endl;
+//         cout << "Cel: " << cel << endl;
+//         cout << "Far: " << far << endl;
+//     }
+//     else {
+//         cout << "Incorrect value, use c, f, or k.";
+//     }
+
+//     return 0;
+// }
+
+
+// Password strength checker
 #include <iostream>
+#include <string>
 using namespace std;
 
 int main() {
-    double temp;
-    cin >> temp;
-    char type;
-    cin >> type;
+    string password;
+    cout << "Enter your password: ";
+    cin >> password;
 
-    if (type == 'c' || type == 'C') {
-        double far = (temp * 1.8) + 32;
-        double kel = temp + 273.15;
-        cout << "Original (C): " << temp << endl;
-        cout << "Far: " << far << endl;
-        cout << "Kel: " << kel << endl;
+    int i = 0;
+    int upper = 0, lower = 0, digit = 0, special = 0;
+
+    // Analyze each character using while loop
+    while (i < password.length()) {
+        char ch = password[i];
+        if (ch >= 'A' && ch <= 'Z') {
+            upper++;
+        } else if (ch >= 'a' && ch <= 'z') {
+            lower++;
+        } else if (ch >= '0' && ch <= '9') {
+            digit++;
+        } else {
+            special++;
+        }
+        i++;
     }
-    else if (type == 'f' || type == 'F') {
-        double cel = (temp - 32) * 5.0 / 9.0;
-        double kel = cel + 273.15;
-        cout << "Original (F): " << temp << endl;
-        cout << "Cel: " << cel << endl;
-        cout << "Kel: " << kel << endl;
+
+    // Count categories present
+    int categories = 0;
+    if (upper > 0) categories++;
+    if (lower > 0) categories++;
+    if (digit > 0) categories++;
+    if (special > 0) categories++;
+
+    // Display detailed analysis
+    cout << "\nPassword Analysis:\n";
+    cout << "Length: " << password.length() << endl;
+    cout << "Uppercase letters: " << upper << endl;
+    cout << "Lowercase letters: " << lower << endl;
+    cout << "Digits: " << digit << endl;
+    cout << "Special characters: " << special << endl;
+    cout << "Categories present: " << categories << endl;
+
+    // Determine password strength using nested if
+    string strength;
+    if (password.length() < 6 || categories <= 2) {
+        strength = "Weak";
+    } else {
+        if (password.length() >= 6 && password.length() <= 8) {
+            if (categories >= 3) {
+                strength = "Medium";
+            } else {
+                strength = "Weak";
+            }
+        } else { // length >= 9
+            if (categories == 4) {
+                strength = "Strong";
+            } else {
+                strength = "Medium";
+            }
+        }
     }
-    else if (type == 'k' || type == 'K') {
-        double cel = temp - 273.15;
-        double far = (cel * 9.0 / 5.0) + 32;
-        cout << "Original (K): " << temp << endl;
-        cout << "Cel: " << cel << endl;
-        cout << "Far: " << far << endl;
-    }
-    else {
-        cout << "Incorrect value, use c, f, or k.";
-    }
+
+    cout << "\nPassword Strength: " << strength << endl;
 
     return 0;
 }
