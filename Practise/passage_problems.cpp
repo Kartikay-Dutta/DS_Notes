@@ -84,70 +84,71 @@
 
 
 // Password strength checker
-#include <iostream>
-#include <string>
-using namespace std;
+// #include <iostream>
+// using namespace std;
 
-int main() {
-    string password;
-    cout << "Enter your password: ";
-    cin >> password;
+// int main() {
+//     string password;
+//     cout << "Enter your password: ";
+//     cin >> password;
 
-    int i = 0;
-    int upper = 0, lower = 0, digit = 0, special = 0;
+//     int i = 0;
+//     int upper = 0, lower = 0, digit = 0, special = 0;
 
-    // Analyze each character using while loop
-    while (i < password.length()) {
-        char ch = password[i];
-        if (ch >= 'A' && ch <= 'Z') {
-            upper++;
-        } else if (ch >= 'a' && ch <= 'z') {
-            lower++;
-        } else if (ch >= '0' && ch <= '9') {
-            digit++;
-        } else {
-            special++;
-        }
-        i++;
-    }
+//     // Analyze each character using while loop
+//     while (i < password.length()) {
+//         char ch = password[i];
+//         if (ch >= 'A' && ch <= 'Z') {
+//             upper++;
+//         } else if (ch >= 'a' && ch <= 'z') {
+//             lower++;
+//         } else if (ch >= '0' && ch <= '9') {
+//             digit++;
+//         } else {
+//             special++;
+//         }
+//         i++;
+//     }
 
-    // Count categories present
-    int categories = 0;
-    if (upper > 0) categories++;
-    if (lower > 0) categories++;
-    if (digit > 0) categories++;
-    if (special > 0) categories++;
+//     // Count categories present
+//     int categories = 0;
+//     if (upper > 0) categories++;
+//     if (lower > 0) categories++;
+//     if (digit > 0) categories++;
+//     if (special > 0) categories++;
 
-    // Display detailed analysis
-    cout << "\nPassword Analysis:\n";
-    cout << "Length: " << password.length() << endl;
-    cout << "Uppercase letters: " << upper << endl;
-    cout << "Lowercase letters: " << lower << endl;
-    cout << "Digits: " << digit << endl;
-    cout << "Special characters: " << special << endl;
-    cout << "Categories present: " << categories << endl;
+//     // Display detailed analysis
+//     cout << "\nPassword Analysis:\n";
+//     cout << "Length: " << password.length() << endl;
+//     cout << "Uppercase letters: " << upper << endl;
+//     cout << "Lowercase letters: " << lower << endl;
+//     cout << "Digits: " << digit << endl;
+//     cout << "Special characters: " << special << endl;
+//     cout << "Categories present: " << categories << endl;
 
-    // Determine password strength using nested if
-    string strength;
-    if (password.length() < 6 || categories <= 2) {
-        strength = "Weak";
-    } else {
-        if (password.length() >= 6 && password.length() <= 8) {
-            if (categories >= 3) {
-                strength = "Medium";
-            } else {
-                strength = "Weak";
-            }
-        } else { // length >= 9
-            if (categories == 4) {
-                strength = "Strong";
-            } else {
-                strength = "Medium";
-            }
-        }
-    }
+//     // Determine password strength using nested if
+//     string strength;
+//     if (password.length() < 6 || categories <= 2) {
+//         strength = "Weak";
+//     } else {
+//         if (password.length() >= 6 && password.length() <= 8) {
+//             if (categories >= 3) {
+//                 strength = "Medium";
+//             } else {
+//                 strength = "Weak";
+//             }
+//         } else { // length >= 9
+//             if (categories == 4) {
+//                 strength = "Strong";
+//             } else {
+//                 strength = "Medium";
+//             }
+//         }
+//     }
 
-    cout << "\nPassword Strength: " << strength << endl;
+//     cout << "\nPassword Strength: " << strength << endl;
 
-    return 0;
-}
+//     return 0;
+// }
+
+
